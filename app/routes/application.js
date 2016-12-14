@@ -1,15 +1,10 @@
 import Ember from 'ember';
+const { inject } = Ember;
 
 export default Ember.Route.extend({
+  employees: inject.service(),
+
   model() {
-    return [
-      { name: "Mitch", dob: "1983-03-26" },
-      { name: "Joe",   dob: "1960-12-14" },
-      { name: "Ellie", dob: "2012-02-10" },
-      { name: "Brian", dob: "1960-12-15" },
-      { name: "Sally", dob: "1990-01-08" },
-      { name: "Mark",  dob: "1960-12-14" },
-      { name: "Liz",   dob: "1960-12-15" }
-    ];
+    return this.get('employees').all();
   }
 });
